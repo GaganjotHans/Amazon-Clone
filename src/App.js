@@ -2,13 +2,13 @@ import "./App.css";
 import Header from "./Header";
 import Home from "./Home";
 import Checkout from "./Checkout";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Login";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Routes>
           <Route
             path="/"
@@ -28,9 +28,10 @@ function App() {
               </>
             }
           />
+          <Route path="/login" element={<Login />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
