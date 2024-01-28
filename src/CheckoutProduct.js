@@ -4,6 +4,7 @@ import StarIcon from "@mui/icons-material/Star";
 import { useStateValue } from "./StateProvider";
 
 function CheckoutProduct({ id, image, title, price, rating }) {
+  // eslint-disable-next-line
   const [{ basket }, dispatch] = useStateValue();
   const removeFromBasket = () => {
     dispatch({
