@@ -3,6 +3,7 @@ import "./Checkout.css";
 import Subtotal from "./Subtotal";
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
+import FlipMove from "react-flip-move";
 
 function Checkout() {
   // eslint-disable-next-line
@@ -16,18 +17,23 @@ function Checkout() {
           alt=""
         />
         <div>
-          <h3>Hello {user?.email}</h3>
           <h2 className="checkout__title">Your Shopping Basket</h2>
-          {basket.map((item) => (
-            <CheckoutProduct
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              image={item.image}
-              price={item.price}
-              rating={item.rating}
-            />
-          ))}
+          {basket.length > 0 ? (
+            <FlipMove enterAnimation="none" leaveAnimation="accordionVertical">
+              {basket.map((item, index) => (
+                <CheckoutProduct
+                  key={`${item.id}${index}`}
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  price={item.price}
+                  rating={item.rating}
+                />
+              ))}
+            </FlipMove>
+          ) : (
+            <h3>Your basket is empty!</h3>
+          )}
         </div>
       </div>
       <div className="checkout__right">
